@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">My Application 2</string>
+    <string name="app_name">Sample Application</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="xu_description">Xavier University – Ateneo de Cagayan is a private, Catholic university run by the Society of Jesus in Cagayan de Oro, Philippines.</string>
