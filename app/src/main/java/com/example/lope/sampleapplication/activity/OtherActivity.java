@@ -1,21 +1,16 @@
 package com.example.lope.sampleapplication.activity;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.lope.sampleapplication.R;
-import com.example.lope.sampleapplication.task.GetRequestTask;
-import com.example.lope.sampleapplication.task.PostRequestTask;
 
 
-public class MyActivity extends Activity {
+public class OtherActivity extends Activity {
 
     //global class variable
     EditText edtQuestion;
@@ -24,7 +19,13 @@ public class MyActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
-
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String datas = extras.getString("EXTRA_ID");
+            if (datas != null){
+                Toast.makeText(getApplicationContext(), "You clicked me!" + extras, Toast.LENGTH_SHORT).show();
+            }
+        }
         //findViewById is accessible within the Activity class
         //(Button) is called type casting. findViewById returns a View object so we need to cast it to a Button object
         //this is why btnLogin (btn) naming convention is important
@@ -36,14 +37,6 @@ public class MyActivity extends Activity {
                 String message = edtQuestion.getText().toString();
                 // Let's use the application's context for example purposes
                 Toast.makeText(getApplicationContext(), "You clicked me!" + message, Toast.LENGTH_SHORT).show();
-//                Intent intent = new Intent();
-//                intent.setClass(getApplicationContext(), OtherActivity.class);
-//                intent.putExtra("EXTRA_ID", "test");
-//                startActivity(intent);
-                PostRequestTask taskPost = new PostRequestTask();
-                taskPost.execute("test");
-                GetRequestTask task = new GetRequestTask();
-                task.execute("test");
             }
         });
     }
